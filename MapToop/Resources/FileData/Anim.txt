@@ -1,0 +1,4 @@
+﻿#图档编号	动画的速度	正面动作名字	正面动作数量	左右动作名字	左右动作数量	后面动作名字	后面动作数量
+$Id	AnimSpeed	FAnim	FAnimNum	LRAnim	LRAnimNum	BAnim	BAnimNum
+1	0.5	Anim/Anim_1_F_%d.png	4	Anim/Anim_1_LR_%d.png	4	Anim/Anim_1_B_%d.png	4
+2	0.5	Anim/Anim_2_%d.png	4	Anim/Anim_2_%d.png	4	Anim/Anim_2_%d.png	4

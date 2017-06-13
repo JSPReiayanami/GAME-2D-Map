@@ -1,0 +1,4 @@
+﻿#地图id	地图资源名字	地图数据
+$Id	ResName	DataName
+60001001	Map/Map2.csb	Map/DataMap2.txt
+60001002	Map/Map3.csb	Map/DataMap3.txt

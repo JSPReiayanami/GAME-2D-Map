@@ -1,0 +1,359 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="win32">
+      <UniqueIdentifier>{84a8ebd7-7cf0-47f6-b75e-d441df67da40}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="resource">
+      <UniqueIdentifier>{715254bc-d70b-4ec5-bf29-467dd3ace079}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{4f5e0771-489d-4be7-815e-c10002076293}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Config">
+      <UniqueIdentifier>{e028c299-089b-494c-8b71-a436b7d2fed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Controller">
+      <UniqueIdentifier>{c8a228e9-aafe-41c3-a3be-ab321753a949}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Entity">
+      <UniqueIdentifier>{0a33e544-0c8a-4336-abd8-b72f41fb01df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene">
+      <UniqueIdentifier>{f833eb85-c622-4d10-b3da-739a81410a4f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Tool">
+      <UniqueIdentifier>{4932784d-7474-46db-b7e8-1735466e5ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Dll">
+      <UniqueIdentifier>{fc640a24-2fe3-44c6-97e8-245ce8d93b51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Test">
+      <UniqueIdentifier>{97676f13-e23f-46be-969b-9614c3b95360}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Ui">
+      <UniqueIdentifier>{e0cd4ccc-c30f-46c5-bf35-79b71e36f147}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Manager">
+      <UniqueIdentifier>{5599060d-98c6-44e9-bc79-080c1eab8895}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\FileData">
+      <UniqueIdentifier>{5c8f0955-efef-4fcd-889e-a38d71fe9603}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene\UILayer">
+      <UniqueIdentifier>{5e7ed0f2-17e1-44ee-8143-34f920914eb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene\UILayer\Common">
+      <UniqueIdentifier>{5bbec0d4-8aa8-40c1-a648-cbc2a8cbcd93}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene\UILayer\MapCreater">
+      <UniqueIdentifier>{08dfee9a-6825-4572-8239-abd73abeefeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene\UILayer\LittleGame">
+      <UniqueIdentifier>{fba7cb39-9067-466f-b86d-30aa27823b65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene\GameComponent">
+      <UniqueIdentifier>{bb13d868-1946-4336-a246-f6da3ec0e396}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Scene\2DMap">
+      <UniqueIdentifier>{1a358513-b2da-4ef4-8ece-4e6d3bfdc2ef}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>win32</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\AppDelegate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\HelloWorldScene.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Controller\Controller_Point.cpp">
+      <Filter>Classes\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Controller_Entity.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Block.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tool\StringHelper.cpp">
+      <Filter>Classes\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tool\TestToLua.cpp">
+      <Filter>Classes\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\MBug.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\MBugBody.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Slots.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\GLTestingLayer.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tool\MapEditor.cpp">
+      <Filter>Classes\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Test\PhysicsScene.cpp">
+      <Filter>Classes\Test</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Effect.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\EffectSprite.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Astar.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\UpdateLayer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tool\TabFileReader.cpp">
+      <Filter>Classes\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\RichTextEntity.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ui\ListView3D.cpp">
+      <Filter>Classes\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\EffectAnimation.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Ui\ItemOption.cpp">
+      <Filter>Classes\Ui</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\MapBase.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\MapRoot.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\RoleModel.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Behaviour.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Tool\MapHelper.cpp">
+      <Filter>Classes\Tool</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\StoryDirector.cpp">
+      <Filter>Classes\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\GameScene.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FileData\FileData_Npc.cpp">
+      <Filter>Classes\FileData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Manager\FileManager.cpp">
+      <Filter>Classes\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FileData\FileData_Anim.cpp">
+      <Filter>Classes\FileData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FileData\FileData_Behaviour.cpp">
+      <Filter>Classes\FileData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\GameLogicDelegate.cpp">
+      <Filter>Classes\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\Interface_Entity.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\UILayer\Common\Interface_Dialog.cpp">
+      <Filter>Classes\Scene\UILayer\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\UILayer\Common\Interface_Temp.cpp">
+      <Filter>Classes\Scene\UILayer\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FileData\FileData_TalkData.cpp">
+      <Filter>Classes\FileData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\UILayer\MapCreater\Interface_MapCreate.cpp">
+      <Filter>Classes\Scene\UILayer\MapCreater</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\FileData\FileData_Map.cpp">
+      <Filter>Classes\FileData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\UILayer\Common\Interface_Main.cpp">
+      <Filter>Classes\Scene\UILayer\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\UILayer\LittleGame\Interface_LittleGame_1.cpp">
+      <Filter>Classes\Scene\UILayer\LittleGame</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\GameComponent\GameButton.cpp">
+      <Filter>Classes\Scene\GameComponent</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Entity\EffectSpine.cpp">
+      <Filter>Classes\Entity</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Scene\2DMap\2DMapBase.cpp">
+      <Filter>Classes\Scene\2DMap</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="main.h">
+      <Filter>win32</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppDelegate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\HelloWorldScene.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Config\Head.h">
+      <Filter>Classes\Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Controller\Controller_Point.h">
+      <Filter>Classes\Controller</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Controller_Entity.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Block.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tool\StringHelper.h">
+      <Filter>Classes\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tool\TestToLua.h">
+      <Filter>Classes\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\MBug.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\MBugBody.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Dll\MathFunction.h">
+      <Filter>Classes\Dll</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Slots.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\GLTestingLayer.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tool\MapEditor.h">
+      <Filter>Classes\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Test\PhysicsScene.h">
+      <Filter>Classes\Test</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Effect.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\EffectSprite.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Astar.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\AppMacros.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\UpdateLayer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tool\TabFileReader.h">
+      <Filter>Classes\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\RichTextEntity.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ui\ListView3D.h">
+      <Filter>Classes\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\EffectAnimation.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Ui\ItemOption.h">
+      <Filter>Classes\Ui</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\MapBase.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MapRoot.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\RoleModel.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Behaviour.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Tool\MapHelper.h">
+      <Filter>Classes\Tool</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\StoryDirector.h">
+      <Filter>Classes\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\GameScene.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FileData\FileData_Npc.h">
+      <Filter>Classes\FileData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Manager\FileManager.h">
+      <Filter>Classes\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FileData\FileData_Anim.h">
+      <Filter>Classes\FileData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FileData\FileData_Behaviour.h">
+      <Filter>Classes\FileData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\GameLogicDelegate.h">
+      <Filter>Classes\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\Interface_Entity.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\UILayer\Common\Interface_Dialog.h">
+      <Filter>Classes\Scene\UILayer\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\UILayer\Common\Interface_Temp.h">
+      <Filter>Classes\Scene\UILayer\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FileData\FileData_TalkData.h">
+      <Filter>Classes\FileData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\UILayer\MapCreater\Interface_MapCreate.h">
+      <Filter>Classes\Scene\UILayer\MapCreater</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\FileData\FileData_Map.h">
+      <Filter>Classes\FileData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\UILayer\Common\Interface_Main.h">
+      <Filter>Classes\Scene\UILayer\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\UILayer\LittleGame\Interface_LittleGame_1.h">
+      <Filter>Classes\Scene\UILayer\LittleGame</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\GameComponent\GameButton.h">
+      <Filter>Classes\Scene\GameComponent</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Entity\EffectSpine.h">
+      <Filter>Classes\Entity</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Scene\2DMap\2DMapBase.h">
+      <Filter>Classes\Scene\2DMap</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="game.rc">
+      <Filter>resource</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+</Project>

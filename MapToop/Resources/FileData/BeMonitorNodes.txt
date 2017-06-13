@@ -1,0 +1,3 @@
+﻿#行为id	执行次数（-1永久,0代表执行一次）	监视范围	监视行为id(1,代表主角,其他id要对应npc表)	监测的方向(1.上,2.下，3.左，4.右)
+$Id	Loop	MonitorLenth	MonitorId	MonitorDir
+100001	-1	4	1	2
