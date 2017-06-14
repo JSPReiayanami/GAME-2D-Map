@@ -41,6 +41,13 @@ bool FileManager::LoadFileData()
 	{
 		CCLOG("[LoadFileData] Load failed [FileData/Anim.txt]");
 	}
+
+	isSuccess = FileDataAnim::GetInstance()->LoadDataFromFileSpine("FileData/SpineAnim.txt");
+	if (isSuccess == false)
+	{
+		CCLOG("[LoadFileData] Load failed [FileData/SpineAnim.txt]");
+	}
+
 	isSuccess = FileDataBehaviour::GetInstance()->LoadDataFromFile();
 	if (isSuccess == false)
 	{

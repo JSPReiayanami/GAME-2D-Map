@@ -16,11 +16,14 @@ public:
 	GameScene();
 	~GameScene();
 	CREATE_FUNC(GameScene);
-	static Scene* GetGameScene();
+	static Scene* GetGameScene(bool isPhysics = false);
 	static GameScene * GetInstance();
 	static void RunGame();
+	static void RunPhysicsGame();
 	virtual bool init();
 public:
+	void SetPhysicsWorld(PhysicsWorld * world);
+	PhysicsWorld * GetPhysicsWorld();
 	int PushIntoMap(int mapId);
 	int PushInterface(Interface_Entity * lay);
 	int PushInterface(const string & name);
@@ -49,6 +52,8 @@ private:
 	bool m_PressedC;
 	bool m_PressedG;
 	string m_TopInterfaceName;
+	cocos2d::PhysicsWorld * m_world;
+	bool m_BoolShowDebug;
 private:
 	int StartIntoMap(int mapId);
 	void ClearAllMap();

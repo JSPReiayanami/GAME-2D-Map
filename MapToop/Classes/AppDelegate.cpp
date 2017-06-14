@@ -7,6 +7,7 @@ USING_NS_CC;
 #include "Manager/FileManager.h"
 #include "Scene/UILayer/Common/Interface_Main.h"
 #include "Scene/UILayer/LittleGame/Interface_LittleGame_1.h"
+#include "Scene/UiLayer/MapCreater/Interface_MapCreate.h"
 AppDelegate::AppDelegate() {
     
 }
@@ -49,11 +50,13 @@ bool AppDelegate::applicationDidFinishLaunching() {
 	//auto scene = PhysicsScene::createScene();
     // run
  	FileManager::GetInstance()->LoadFileData();
- 	GameScene::RunGame();
+ 	//GameScene::RunGame();
+	GameScene::RunPhysicsGame();
  //	
-	Interface_Main::CreateToScene();
-	Interface_LittleGame_1::CreateToScene();
-	GameScene::GetInstance()->PushIntoMap(60001001);
+	//Interface_Main::CreateToScene();
+	Interface_MapCreate::CreateToScene();
+	//Interface_LittleGame_1::CreateToScene();
+	//GameScene::GetInstance()->PushIntoMap(60001001);
 	//director->runWithScene(HelloWorld::createScene());
     return true;
 }

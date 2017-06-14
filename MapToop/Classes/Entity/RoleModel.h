@@ -9,14 +9,20 @@ class EffectArmature;
 class MapBase;
 class Behaviour;
 class CfgAnim;
+class EffectSpine;
 class RoleModel : public Layout
 {
 public:
+	enum EyeAngleType {
+		Eye_Sky = 1,
+		Eye_2D  = 2,
+	};
+public:
 	RoleModel();
 	~RoleModel();
-	static RoleModel * Create(int roleId);
+	static RoleModel * Create(int roleId, EyeAngleType eyeType = EyeAngleType::Eye_2D);
 	static RoleModel * CreatePlayer();
-	virtual bool init(int roleId);
+	virtual bool init(int roleId, EyeAngleType eyeType = EyeAngleType::Eye_2D);
 	virtual void SetId(int id);
 	virtual void SetModelId(int modelId);
 	virtual void SetBehaviour(vector<int> BehaviourId);
@@ -24,6 +30,7 @@ public:
 	virtual void UpdateBehaviour();
 	void UpdateView();
 	void UpdataBehaviour();
+	void RunAnimAction(ActionType actionType);
 public://我懒了，直接访问吧
 	bool m_IsTouchNpc;
 protected:
@@ -31,6 +38,7 @@ protected:
 	Layout * m_LayoutContent;
 	EffectArmature * m_Model;
 	MapBase * m_MyMap;
+	EffectSpine * m_SpineModel;
 	int m_Id;
 	int m_ModelId;
 	float m_Speed;
@@ -43,6 +51,9 @@ protected:
 	bool m_IsCanMove;
 	bool m_IsTouchNpcCache;
 	ModelType m_ModelType;
+	EyeAngleType m_EysType;
+	PhysicsBody * m_PhysicsBody;
+	ActionType m_ActionType;
 public:
 	virtual void SetMapDelegate(MapBase * mapBase);
 	virtual void RunWithPath(vector<PosInt>  path,bool isTouchNpc = false);
@@ -65,6 +76,7 @@ protected:
 	virtual void SetPos(PosInt pos);
 private:
 	void RefreshAnim(const CfgAnim * cfg);
+	void RefreshSpineAnim(const CfgSpineAnim * cfg);
 	void Adaptive();
 	void RunPath();
 	void RunEnd();

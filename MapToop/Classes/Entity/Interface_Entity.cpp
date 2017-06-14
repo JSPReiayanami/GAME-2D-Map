@@ -4,6 +4,7 @@ Interface_Entity::Interface_Entity()
 {
 	m_Root = nullptr;
 	m_LayerSrc = "";
+	m_world = nullptr;
 }
 Interface_Entity::~Interface_Entity()
 {
@@ -87,4 +88,9 @@ void Interface_Entity::PushIntoScene()
 void Interface_Entity::PopToScene(bool isRemove)
 {
 	GameScene::GetInstance()->PopInterface(this, isRemove);
+}
+
+void Interface_Entity::SetPhysicsWorld(PhysicsWorld * wd)
+{
+	m_world = wd;
 }

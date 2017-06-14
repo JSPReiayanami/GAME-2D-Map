@@ -39,6 +39,7 @@ class EffectSpine : public Layout
 {
 public:
 	static EffectSpine *create(const std::string& skeletonDataFile, const std::string& atlasFile, float scale = 1);
+	void PlayWithActionName(std::string name);
 protected:
 	EffectSpine();
 	~EffectSpine();
@@ -51,6 +52,7 @@ private:
 	void update(float delta);
 	vector<EffectSpineFuncData> m_CallFunc;
 	SkeletonAnimation * m_Spine;
+	std::string m_CurActionName;
 };
 
 

@@ -13,5 +13,7 @@ namespace MapHelper{
 	bool IsCanMoveToForNpc(RoleModel * rm,PosInt pos);
 	DirType GetDirWithPosToPos(PosInt pos, PosInt targetPos);
 	DirType GetOppositeDir(DirType dir);
+
+	bool IsInPolygon(Vec2 touch);
 }
 #endif //!__MapHelper_H__

@@ -46,6 +46,7 @@ public:
 	Layout * m_Root;//根节点
 	string   m_LayerSrc;//界面资源
 	bool m_InScene;//是否在界面中显示
+	PhysicsWorld * m_world;
 	/*
 		@设置自己的名字
 	*/
@@ -68,7 +69,8 @@ public:
 	virtual void OnClose();
 	virtual void PushIntoScene();
 	virtual void PopToScene(bool isRemove = true);
-	
+public:
+	void SetPhysicsWorld(PhysicsWorld * wd);
 protected:
 
 private:

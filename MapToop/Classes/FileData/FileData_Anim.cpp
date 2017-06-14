@@ -4,6 +4,8 @@
 FileDataAnim::FileDataAnim()
 {
 	m_Cfg.clear();
+	m_SpineCfg.clear();
+
 }
 
 FileDataAnim::~FileDataAnim()
@@ -42,6 +44,24 @@ bool FileDataAnim::LoadDataFromFile(const char* fileName)
 	}
 	return true;
 }
+
+bool FileDataAnim::LoadDataFromFileSpine(const char* fileName)
+{
+	TFReader file = TFReader::create(fileName);
+	if (!file)
+		return false;
+	m_SpineCfg.clear();
+	int count = (int)file.GetItemCount();
+	for (int i = 0; i < count; ++i) {
+		CfgSpineAnim cfg;
+		file.Read(i, "Id", cfg.Id);
+		file.Read(i, "AnimSpeed", cfg.SpineJson);
+		file.Read(i, "BAnim", cfg.SpineRes);
+		file.Read(i, "BAnimNum", cfg.SpineScale);
+		m_SpineCfg.insert(make_pair(cfg.Id, cfg));
+	}
+	return true;
+}
 const CfgAnim* FileDataAnim::GetCfg(int Id)
 {
 	if (m_Cfg.find(Id) != m_Cfg.end())
@@ -49,4 +69,33 @@ const CfgAnim* FileDataAnim::GetCfg(int Id)
 		return &m_Cfg.at(Id);
 	}
 	return nullptr;
+}
+
+const CfgSpineAnim* FileDataAnim::GetSpineCfg(int Id)
+{
+	if (m_SpineCfg.find(Id) != m_SpineCfg.end())
+	{
+		return &m_SpineCfg.at(Id);
+	}
+	return nullptr;
+}
+
+std::string FileDataAnim::GetActionName(ActionType actionType)
+{
+	if (m_SpineActionName.find(actionType) != m_SpineActionName.end())
+	{
+		return m_SpineActionName.at(actionType);
+	}
+
+	return "";
+}
+
+void FileDataAnim::InitActionName()
+{
+	m_SpineActionName.clear();
+	m_SpineActionName.insert(std::make_pair(Action_Walk, "Walk"));
+	m_SpineActionName.insert(std::make_pair(Action_Run, "Run"));
+	m_SpineActionName.insert(std::make_pair(Action_Attack, "Attack"));
+	m_SpineActionName.insert(std::make_pair(Action_BeAttack, "BeAttack"));
+	m_SpineActionName.insert(std::make_pair(Action_Skill, "Skill"));
 }

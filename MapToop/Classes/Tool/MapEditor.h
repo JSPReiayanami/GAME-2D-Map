@@ -86,6 +86,7 @@ private:
 	AStar * m_AStar;
 	std::map<int, RoleModel *> m_RoleModels;
 	RoleModel * m_CurRoleModel;
+	Sprite * m_Plygon;
 private:
 	void InitWidget();
 	void InitEvent();

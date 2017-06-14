@@ -600,5 +600,20 @@ enum TalkType
 	TalkType_Select,//有选择对话
 	TalkType_MAX
 };
+
+enum ActionType
+{
+	Action_Run = 2,
+	Action_Walk = 3,
+	Action_Attack = 4,
+	Action_BeAttack = 5,
+	Action_Skill = 6,
+};
+
+enum OperationType
+{
+	OP_Move = 1,
+	OP_Jump = 2,
+};
 //===================
 #endif

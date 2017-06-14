@@ -3,6 +3,7 @@
 EffectSpine::EffectSpine()
 {
 	m_Spine = nullptr;
+	m_CurActionName = "";
 }
 
 EffectSpine::~EffectSpine()
@@ -21,6 +22,20 @@ EffectSpine * EffectSpine::create(const std::string& skeletonDataFile, const std
 	return nullptr;
 }
 
+void EffectSpine::PlayWithActionName(std::string name)
+{
+	spTrackEntry * ani = m_Spine->setAnimation(0, name, true);
+	if (m_CurActionName != "" && nullptr == ani)
+	{
+		m_Spine->setAnimation(0, m_CurActionName, true);
+		CCLOG("[%s]Have no this action!", name.c_str());
+	}
+	else
+	{
+		m_CurActionName = name;
+	}
+}
+
 bool EffectSpine::init(const std::string& skeletonDataFile, const std::string& atlasFile, float scale /*= 1*/)
 {
 	m_Spine = SkeletonAnimation::createWithFile(skeletonDataFile, atlasFile, scale);
@@ -28,10 +43,10 @@ bool EffectSpine::init(const std::string& skeletonDataFile, const std::string& a
 	{
 		return false;
 	}
-	m_Spine->setStartListener(std::bind(&EffectSpine::OnStartListener, this));
-	m_Spine->setEndListener(std::bind(&EffectSpine::OnEndListener, this));
-	m_Spine->setCompleteListener(std::bind(&EffectSpine::OnCompleteListener, this));
-	m_Spine->setEventListener(std::bind(&EffectSpine::OnEventListener, this));
+	m_Spine->setStartListener(std::bind(&EffectSpine::OnStartListener, this,std::placeholders::_1));
+	m_Spine->setEndListener(std::bind(&EffectSpine::OnEndListener, this, std::placeholders::_1));
+	m_Spine->setCompleteListener(std::bind(&EffectSpine::OnCompleteListener, this, std::placeholders::_1, std::placeholders::_2));
+	m_Spine->setEventListener(std::bind(&EffectSpine::OnEventListener, this, std::placeholders::_1, std::placeholders::_2));
 
 	this->addChild(m_Spine);
 	this->setContentSize(m_Spine->getContentSize());

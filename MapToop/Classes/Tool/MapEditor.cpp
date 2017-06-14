@@ -11,9 +11,10 @@
 #define __OpenFunction_2 true// 按F2隐藏块层
 #define __OpenFunction_3 true//按F3隐藏普通块
 #define __OpenFunction_4 true// 地图选择功能
-#define __TestAStarFunction true //开启测试A星寻路功能
+#define __TestAStarFunction false //开启测试A星寻路功能
 #include "Entity/Astar.h"
 #include "FileData/FileData_Npc.h"
+#include "Entity/MapPhysicsPolygon.h"
 //===[
 
 
@@ -36,6 +37,7 @@ m_CurPointBlock(nullptr), m_CurMapName("")
 	m_RoleModels.clear();
 	m_EditModelType = ET_NOType;
 	m_CurRoleModel = nullptr;
+	m_Plygon = nullptr;
 }
 
 MapEditor::~MapEditor()
@@ -831,8 +833,18 @@ void MapEditor::OnKeyPressed(EventKeyboard::KeyCode keycode, cocos2d::Event *evn
 	{
 		m_IsBoolPressed = true;
 		CCLOG("[MapEditor::OnKeyPressed]");
-		
 	}
+
+	if (keycode == EventKeyboard::KeyCode::KEY_ALT )
+	{
+		auto move_point = m_LayoutBack->getPosition();
+		float height_num = (m_CurMousePoint.x - move_point.x) ;
+		float wdith_num = (m_CurMousePoint.y - move_point.y);
+		auto mpp = MapPhysicsPolygon::create("1.png");
+		mpp->setPosition(Vec2(height_num, wdith_num));
+		m_LayoutBlockPoint->addChild(mpp);
+	}
+	
 	
 	if (keycode == EventKeyboard::KeyCode::KEY_ESCAPE)
 	{

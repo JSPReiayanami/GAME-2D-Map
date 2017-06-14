@@ -81,8 +81,7 @@ void MapRoot::PlayerRunToPos(int roleId, PosInt pos)
 		}
 	}
 }
-float testTime = 0.5;
-float rate = 0.3;
+
 void MapRoot::TouchBlockPos(int posx, int posy)
 {
 	if (TouchNpc(PosInt(posx, posy)) == true)
@@ -91,37 +90,6 @@ void MapRoot::TouchBlockPos(int posx, int posy)
 	}
 	
 	PlayerRunToPos(PLAYER_1_UID, PosInt(posx, posy));
-	//int ty = GetPosType(PosInt(posx, posy));
-	//CCLOG("Touch type:%d", ty);
-	//if (m_Roles.find(1) != m_Roles.end())
-	//{
-	//	PosInt pos = m_Roles.at(1)->GetPos();
-	//	clock_t start, finish;
-	//	start = clock();
-	//	auto node = m_AStar->FindPath(posx, posy, pos.getX(), pos.getY(), m_Roles.at(1)->GetMyCanNotMoveNodeTypes());
-	//	finish = clock();
-	//	CCLOG("TIME : %f", (finish - start) / 1000.0);
-	//	//m_AStar->PrintPath();
-	//	if (node == false)
-	//	{
-	//	}
-	//	else{
-	//		auto APth = m_AStar->GetPath();
-	//		//
-	//		vector<PosInt> intPath;
-	//		intPath.clear();
-	//		for (auto & pathx : APth)
-	//		{
-	//			for (auto & pa : pathx.second)
-	//			{
-	//				intPath.push_back(PosInt(pa.first, pa.second));
-	//				//intPath.insert(intPath.begin(), PosInt(pa.first, pa.second));
-	//			}
-	//		}
-
-	//		m_Roles.at(1)->RunWithPath(intPath);
-	//	}
-	//}
 }
 
 void MapRoot::update(float delta)

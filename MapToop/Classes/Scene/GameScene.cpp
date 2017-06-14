@@ -4,6 +4,7 @@
 #include "Entity/Interface_Entity.h"
 #include "Scene/UILayer/MapCreater/Interface_MapCreate.h"
 #include "Manager/StoryDirector.h"
+#include "Config/Head.h"
 Scene * GameScene::m_Scene = nullptr;
 GameScene * GameScene::m_GameScene = nullptr;
 GameScene::GameScene()
@@ -13,6 +14,8 @@ GameScene::GameScene()
 	m_PressedM = false;
 	m_PressedC = false;
 	m_TopInterfaceName = "";
+	m_BoolShowDebug = false;
+	m_world = nullptr;
 }
 
 GameScene::~GameScene()
@@ -20,13 +23,30 @@ GameScene::~GameScene()
 	CC_SAFE_DELETE(m_GameLogic);
 }
 
-Scene* GameScene::GetGameScene()
+Scene* GameScene::GetGameScene(bool isPhysics /*= false*/)
 {
 	if (m_Scene == nullptr)
 	{
-		m_Scene = Scene::create();
-		GameScene * gameScene = GameScene::GetInstance();
-		m_Scene->addChild(gameScene);
+		if (true == isPhysics) {
+			m_Scene = Scene::createWithPhysics();
+			GameScene * gameScene = GameScene::GetInstance();
+			m_Scene->addChild(gameScene);
+
+			gameScene->SetPhysicsWorld(m_Scene->getPhysicsWorld());
+			//Åö×²±ß¿ò
+			auto edgeSp = Sprite::create();
+			auto boundBody = PhysicsBody::createEdgeBox(__VisibleSize, PHYSICSBODY_MATERIAL_DEFAULT, 3);
+			edgeSp->setPosition(Point(__VisibleSize_Width / 2, __VisibleSize_Height / 2));
+			edgeSp->setPhysicsBody(boundBody);
+			gameScene->addChild(edgeSp);
+		}
+		else
+		{
+			m_Scene = Scene::create();
+			GameScene * gameScene = GameScene::GetInstance();
+			m_Scene->addChild(gameScene);
+		}
+		
 	}
 	return m_Scene;
 }
@@ -46,6 +66,14 @@ void GameScene::RunGame()
 	{
 		auto director = Director::getInstance();
 		director->runWithScene(GetGameScene());
+	}
+}
+void GameScene::RunPhysicsGame()
+{
+	if (m_Scene == nullptr)
+	{
+		auto director = Director::getInstance();
+		director->runWithScene(GetGameScene(true));
 	}
 }
 #define  InitLayoutForMap(who,zder,father)\
@@ -91,7 +119,14 @@ int GameScene::StartIntoMap(int mapId)
 	m_CurShowType = StoryGame;
 	return mapId;
 }
-
+void GameScene::SetPhysicsWorld(PhysicsWorld * world)
+{
+	m_world = world;
+}
+PhysicsWorld * GameScene::GetPhysicsWorld()
+{
+	return m_world;
+}
 int GameScene::PushIntoMap(int mapId)
 {
 	if (mapId == m_CurMapId)
@@ -141,6 +176,7 @@ int GameScene::PushInterface(Interface_Entity * lay)
 		Interface_Entity * laylast = GetUiLayout(name);
 		if (laylast == nullptr)
 		{
+			lay->SetPhysicsWorld(this->m_world);
 			m_UiLayout.insert(make_pair(name, lay));
 			m_LayoutUi->addChild(lay);
 			lay->OnIntoScene();
@@ -286,6 +322,22 @@ void GameScene::OnKeyReleased(EventKeyboard::KeyCode keycode, cocos2d::Event *ev
 }
 void GameScene::OnKeyPressed(EventKeyboard::KeyCode keycode, cocos2d::Event *evnet)
 {
+	if (keycode == EventKeyboard::KeyCode::KEY_F1)
+	{
+		if (nullptr != m_world) 
+		{
+			m_BoolShowDebug = !m_BoolShowDebug;
+			if (true == m_BoolShowDebug) 
+			{
+				m_world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_ALL);
+			}
+			else
+			{
+				m_world->setDebugDrawMask(PhysicsWorld::DEBUGDRAW_NONE);
+			}
+		}
+	}
+
 	if (keycode == EventKeyboard::KeyCode::KEY_ALT)
 	{
 		m_PressedALT = true;

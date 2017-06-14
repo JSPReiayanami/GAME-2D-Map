@@ -7,6 +7,7 @@
 #include "FileData/FileData_Npc.h"
 #include "Scene/GameScene.h"
 #include "Scene/GameLogicDelegate.h"
+#include "Entity/EffectSpine.h"
 RoleModel::RoleModel()
 {
 	m_MyMap = nullptr;
@@ -23,6 +24,10 @@ RoleModel::RoleModel()
 	m_Id = 0;
 	m_ModelId = 0;
 	m_ModelType = ModelType::ModelT_Role;
+	m_SpineModel = nullptr;
+	m_EysType = EyeAngleType::Eye_2D;
+	m_PhysicsBody = nullptr;
+	m_ActionType = ActionType::Action_Walk;
 }
 
 RoleModel::~RoleModel()
@@ -34,10 +39,10 @@ RoleModel::~RoleModel()
 	m_Behaviour.clear();
 }
 
-RoleModel * RoleModel::Create(int roleId)
+RoleModel * RoleModel::Create(int roleId,EyeAngleType eyeType/* = EyeAngleType::Eye_2D*/)
 {
 	RoleModel * rm = new RoleModel();
-	if (rm && rm->init(roleId))
+	if (rm && rm->init(roleId,eyeType))
 	{
 		rm->autorelease();
 		return rm;
@@ -48,12 +53,13 @@ RoleModel * RoleModel::Create(int roleId)
 	}
 	return rm;
 }
-bool RoleModel::init(int roleId)
+bool RoleModel::init(int roleId, EyeAngleType eyeType/* = EyeAngleType::Eye_2D*/)
 {
 	if (!Layout::init())
 	{
 		return false;
 	}
+	m_EysType = eyeType;
 	//this->setColor(Color3B::RED);
 	//this->setBackGroundColor(Color3B::YELLOW);
 	//this->setBackGroundColorType(Layout::BackGroundColorType::SOLID);
@@ -80,11 +86,23 @@ void RoleModel::SetId(int id)
 void RoleModel::SetModelId(int modelId)
 {
 	m_ModelId = modelId;
-	const CfgAnim * cfg = FileDataAnim::GetInstance()->GetCfg(m_ModelId);
-	if (cfg != nullptr)
+	if (m_EysType == Eye_Sky)
 	{
-		RefreshAnim(cfg);
+		const CfgAnim * cfg = FileDataAnim::GetInstance()->GetCfg(m_ModelId);
+		if (cfg != nullptr)
+		{
+			RefreshAnim(cfg);
+		}
 	}
+	else if(m_EysType == Eye_2D)
+	{
+		const CfgSpineAnim * cfg = FileDataAnim::GetInstance()->GetSpineCfg(m_ModelId);
+		if (cfg != nullptr)
+		{
+			RefreshSpineAnim(cfg);
+		}
+	}
+	
 }
 void RoleModel::SetBehaviour(vector<int> BehaviourId)
 {
@@ -117,6 +135,17 @@ void RoleModel::UpdateView()
 void RoleModel::UpdataBehaviour()
 {
 
+}
+
+void RoleModel::RunAnimAction(ActionType actionType)
+{
+	if (Eye_2D == m_EysType)
+	{
+		if (nullptr != m_SpineModel && m_ActionType != actionType)
+		{
+			m_SpineModel->PlayWithActionName(FileDataAnim::GetInstance()->GetActionName(actionType));
+		}
+	}
 }
 //public:
 void RoleModel::SetMapDelegate(MapBase * mapBase)
@@ -210,16 +239,39 @@ void RoleModel::SetDir(DirType dir)
 }
 void RoleModel::RefreshAnimWithDir(DirType dir)
 {
-	if (dir != DirType::DirT_MAX)
+	if (m_Model && m_EysType == Eye_Sky)
 	{
-		m_Model->setScaleX(1);
-		if (dir == DirType::DirT_Right)
+		if (dir != DirType::DirT_MAX)
 		{
-			m_Model->setScaleX(-1);
-			dir = DirType::DirT_Left;
+			m_Model->setScaleX(1);
+			if (dir == DirType::DirT_Right)
+			{
+				m_Model->setScaleX(-1);
+				dir = DirType::DirT_Left;
+			}
+			m_Model->PlayAnimation(StringUtils::format("%d", (int)(dir)));
 		}
-		m_Model->PlayAnimation(StringUtils::format("%d", (int)(dir)));
 	}
+
+	if (m_SpineModel && m_EysType == Eye_2D)
+	{
+		float dir_sc = m_Model->getScale();
+		if (dir == DirT_Right)
+		{
+			if (dir_sc <= 0)
+			{
+				dir_sc = -dir_sc;
+			}
+		}
+		else if (dir == DirT_Left) {
+			if (dir_sc >= 0)
+			{
+				dir_sc = -dir_sc;
+			}
+		}
+		m_Model->setScale(dir_sc);
+	}
+	
 }
 bool RoleModel::IsRuning()
 {
@@ -310,7 +362,17 @@ void RoleModel::RefreshAnim(const CfgAnim * cfg)
 	}
 	Adaptive();
 }
-
+void RoleModel::RefreshSpineAnim(const CfgSpineAnim * cfg)
+{
+	if (m_SpineModel != nullptr)
+	{
+		m_SpineModel->removeFromParent();
+		m_SpineModel = nullptr;
+	}
+	m_SpineModel = EffectSpine::create(cfg->SpineJson, cfg->SpineRes, cfg->SpineScale);
+	this->setContentSize(m_SpineModel->getContentSize());
+	Adaptive();
+}
 void RoleModel::Adaptive()
 {
 	Size rm_size = this->getContentSize();
